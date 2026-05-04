@@ -1,5 +1,9 @@
 
 import 'package:flutter/material.dart';
+import 'package:whatsapp_app/Screens/Profile.dart';
+import 'package:whatsapp_app/Screens/homepage.dart';
+import 'package:whatsapp_app/Screens/status.dart';
+import 'status.dart';
 
 class CallsPage extends StatelessWidget {
   const CallsPage({super.key});
@@ -97,7 +101,7 @@ class CallsPage extends StatelessWidget {
                   ),
                   shape: WidgetStateProperty.all(
                     RoundedRectangleBorder(
-                      borderRadius: BorderRadiusGeometry.circular(40)
+                      borderRadius: BorderRadiusGeometry.circular(90)
                     )
                   ),),
                 child: Text(
@@ -285,11 +289,141 @@ class CallsPage extends StatelessWidget {
                       trailing:  Icon(Icons.call, color: Colors.black),
                     ),
                     SizedBox(height: 5,),
-
-
           ],
         ),
       ),
+
+      //Bottom Navigation 
+      bottomNavigationBar: BottomAppBar(
+  color: Colors.white,
+  child: Container(
+    height: 70, // 👈 yahan height fix karo
+    padding: EdgeInsets.symmetric(horizontal: 20),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Material(
+  color: Colors.transparent,
+  child: InkWell(
+    onTap: () {
+      print("chat clicked");
+
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => HomePage(),
+        ),
+      );
+    },
+    child: SizedBox(
+      width: 60,   // 👈 IMPORTANT (tap area fix)
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(Icons.chat,),
+          Text("Chats", ),
+        ],
+      ),
+    ),
+  ),
+),
+
+        Material(
+  color: Colors.transparent,
+  child: InkWell(
+    onTap: () {
+      print("Status clicked");
+
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => Status(),
+        ),
+      );
+    },
+    child: SizedBox(
+      width: 60,   // 👈 IMPORTANT (tap area fix)
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(Icons.donut_large_outlined, ),
+          Text("Updates",),
+        ],
+      ),
+    ),
+  ),
+),
+
+        Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.people_alt, ),
+            Text("Communities"),
+          ],
+        ),
+
+        Material(
+  color: Colors.transparent,
+  child: InkWell(
+    onTap: () {
+      print("Status clicked");
+
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => CallsPage(),
+        ),
+      );
+    },
+    child: SizedBox(
+      width: 60,   // 👈 IMPORTANT (tap area fix)
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(Icons.call, color: Colors.green,),
+          Text("Calls", style: TextStyle( color: Colors.green),),
+        ],
+      ),
+    ),
+  ),
+),
+      ],
+    ),
+  ),
+),
+
+drawer: Drawer(
+  child: Column(
+    children: [
+      UserAccountsDrawerHeader(
+        accountName: Text(
+          "Umar"), 
+          accountEmail: Text(
+            "imumarsajjad@gmai.com"
+          ),
+          currentAccountPicture: CircleAvatar(
+            backgroundImage: NetworkImage("https://avatars.githubusercontent.com/u/155773361?v=4"),
+          ),
+          decoration: BoxDecoration(color: Colors.blue),
+          ),
+          ListTile(
+            leading: Icon(Icons.people),
+            title: Text("Profile"),
+            onTap: (){
+              Navigator.push(
+                context, MaterialPageRoute(
+                  builder: (context) => ProfileView()),
+                  );
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.settings),
+            title: Text("Setting"),
+            onTap: (){},
+          ),
+    ],
+  ),
+),
       
     );
   }
