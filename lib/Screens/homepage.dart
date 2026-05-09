@@ -1,5 +1,8 @@
 
 import 'package:flutter/material.dart';
+import 'package:whatsapp_app/Chats/chatscreen.dart';
+import 'package:whatsapp_app/Chats/chatscreen1.dart';
+import 'package:whatsapp_app/Chats/chatscreen2.dart';
 import 'package:whatsapp_app/Screens/Profile.dart';
 import 'package:whatsapp_app/Screens/calls.dart';
 import 'package:whatsapp_app/Screens/status.dart';
@@ -20,6 +23,7 @@ class HomePage extends StatelessWidget {
         ],        
       ),
       body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Column(
           children: [
                     Container( width: double.infinity , height: 50, child: Icon(Icons.search_rounded), padding: EdgeInsets.symmetric(horizontal: 16),
@@ -30,6 +34,12 @@ class HomePage extends StatelessWidget {
                       leading: CircleAvatar(backgroundImage: NetworkImage("https://static.vecteezy.com/system/resources/thumbnails/052/248/811/small/autumn-leaf-wallpaper-hd-wallpaper-free-photo.jpeg"),),
                       title: Text("Hamza", style: TextStyle(fontSize: 20, fontWeight: FontWeight.normal, color: Colors.black),),
                       subtitle: Text("kesy hoo?"),
+                      onTap: () {
+                        Navigator.push(
+                          context, MaterialPageRoute(
+                            builder: (context) => ChatScreen()),
+                            );
+                      },
                       tileColor: Colors.white,
                       trailing:  Column( 
                         children: [
@@ -45,6 +55,12 @@ class HomePage extends StatelessWidget {
                       leading: CircleAvatar(backgroundImage: NetworkImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2TnSvt2u2jSN-BZ41sI_5Ts0g3HySp4clpg&s"),),
                       title: Text("Sheroz", style: TextStyle(fontSize: 20, fontWeight: FontWeight.normal, color: Colors.black),),
                       subtitle: Text("Hmmm"),
+                      onTap: () {
+                        Navigator.push(
+                          context, MaterialPageRoute(
+                            builder: (context) => ChatScreen_1()),
+                            );
+                      },
                       tileColor: Colors.white,
                       trailing:  Column( 
                         children: [
@@ -58,6 +74,12 @@ class HomePage extends StatelessWidget {
                       leading: CircleAvatar(backgroundImage: NetworkImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBl-0G_wXEjGFJe2mvML839mWKlzumBhZQNw&s"),),
                       title: Text("Muneeb", style: TextStyle(fontSize: 20, fontWeight: FontWeight.normal, color: Colors.black),),
                       subtitle: Text("Aa rha hun"),
+                      onTap: () {
+                        Navigator.push(
+                          context, MaterialPageRoute(
+                            builder: (context) => ChatScreen_2()),
+                            );
+                      },
                       tileColor: Colors.white,
                       trailing:  Column( 
                         children: [
@@ -154,7 +176,10 @@ class HomePage extends StatelessWidget {
       //Navigation Bar
 
   bottomNavigationBar: BottomAppBar(
+  elevation: 5,
   color: Colors.white,
+  child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 6),
   child: Container(
     height: 70, // 👈 yahan height fix karo
     padding: EdgeInsets.symmetric(horizontal: 20),
@@ -250,7 +275,7 @@ class HomePage extends StatelessWidget {
     ),
   ),
 ),
-
+  ),
 drawer: Drawer(
   child: Column(
     children: [

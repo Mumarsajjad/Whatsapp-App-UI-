@@ -21,6 +21,7 @@ class CallsPage extends StatelessWidget {
       ),
       
       body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
